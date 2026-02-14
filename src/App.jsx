@@ -91,13 +91,13 @@ const handleFormSubmit = async (e) => {
 };
 
 const ResultsPage = () => (
-    <div className="max-w-4xl mx-auto space-y-8 pb-20">
+    <div className="max-w-4xl mx-auto space-y-8 pb-">
       <div className="mb-0 text-center">
         <h2 className="text-3xl font-black text-slate-900 tracking-tight">Submission Status & Results</h2>
         <p className="text-slate-500 mt-2">Enter your Submission ID to check progress or download test data.</p>
       </div>
 
-      <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm max-w-xl mx-auto">
+      <div className="bg-white p-8 rounded-3xl border border-slate-0 shadow-sm max-w-xl mx-auto">
         <form onSubmit={handleLookup} className="space-y-4">
           <div>
             <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Submission ID</label>
@@ -105,7 +105,7 @@ const ResultsPage = () => (
               <input 
                 type="text" 
                 placeholder="e.g. Venkly-1234"
-                className="flex-1 p-4 rounded-2xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                className="flex-1 p-4 rounded-2xl border border-slate-0 outline-none focus:ring-2 focus:ring-blue-500 font-mono"
                 value={searchId}
                 onChange={(e) => setSearchId(e.target.value.toUpperCase())}
               />
@@ -138,7 +138,7 @@ const ResultsPage = () => (
               </div>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-0">
               <h4 className="font-bold text-slate-900 mb-1">{foundResult.project_title || foundResult.project}</h4>
               <p className="text-sm text-slate-500">Your design is currently being screened for wind tunnel safety and dimensional accuracy.</p>
             </div>
@@ -146,13 +146,13 @@ const ResultsPage = () => (
             <div className="grid grid-cols-2 gap-4">
               <button 
                 onClick={() => window.open(`${supabaseUrl}/storage/v1/object/public/design-files/${foundResult.file_url}`)}
-                className="p-4 rounded-2xl border border-blue-200 text-blue-600 text-sm font-bold flex flex-col items-center gap-2 hover:bg-blue-50 transition-all"
+                className="p-4 rounded-2xl border border-blue-0 text-blue-600 text-sm font-bold flex flex-col items-center gap-2 hover:bg-blue-50 transition-all"
               >
-                <Download size={20} /> Download Data
+                <Download size={} /> Download Data
               </button>
               
-              <button className="p-4 rounded-2xl border border-slate-200 text-slate-400 text-sm font-bold flex flex-col items-center gap-2 cursor-not-allowed">
-                <BarChart3 size={20} /> Analysis PDF
+              <button className="p-4 rounded-2xl border border-slate-0 text-slate-400 text-sm font-bold flex flex-col items-center gap-2 cursor-not-allowed">
+                <BarChart3 size={} /> Analysis PDF
               </button>
             </div>
             <p className="text-[10px] text-center text-slate-400 italic">Downloadable results will appear here once testing is complete.</p>
@@ -163,17 +163,17 @@ const ResultsPage = () => (
   );
 
   const CapabilitiesPage = () => (
-    <div className="max-w-4xl mx-auto space-y-12 pb-20">
+    <div className="max-w-4xl mx-auto space-y-12 pb-">
       <div className="mb-10">
         <h2 className="text-3xl font-black text-slate-900 tracking-tight">Technical Capabilities</h2>
         <p className="text-slate-500 mt-2">Experimental constraints and facility specifications for the Venkly Wind Tunnel to experiment with your aerodynamics.</p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div className="bg-white p-6 rounded-2xl border border-slate-0 shadow-sm">
           <Gauge className="text-blue-600 mb-3" size={28} />
           <h3 className="font-bold text-slate-900">Max Wind Speed</h3>
-          <p className="text-2xl font-black text-blue-600">20 m/s</p>
+          <p className="text-2xl font-black text-blue-600">15 m/s</p>
           <p className="text-xs text-slate-500 mt-1 italic">Variable & Adjustable</p>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm md:col-span-2">
@@ -338,7 +338,7 @@ const ResultsPage = () => (
             <div className="grid md:grid-cols-3 gap-4">
               {[
                 "Design fits within 30 × 22 × 15 cm",
-                "Suitable for wind speeds up to 20 m/s",
+                "Suitable for wind speeds up to 15 m/s",
                 "Acknowledged low-Reynolds-number test"
               ].map((text, i) => (
                 <label key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl border border-amber-200 cursor-pointer hover:shadow-sm transition-shadow">
@@ -381,7 +381,7 @@ const ResultsPage = () => (
 
       <section className="grid md:grid-cols-3 gap-8">
         {[
-          { icon: <Wind />, color: "bg-blue-100 text-blue-600", title: "Physical Tunnel", text: "30×22×15 cm section, testing up to 20 m/s." },
+          { icon: <Wind />, color: "bg-blue-100 text-blue-600", title: "Physical Tunnel", text: "30×22×15 cm section, testing up to 15 m/s." },
           { icon: <BarChart3 />, color: "bg-emerald-100 text-emerald-600", title: "Live Data", text: "Access high-res CSV and performance graphs." },
           { icon: <CheckCircle />, color: "bg-purple-100 text-purple-600", title: "Validation", text: "The gold standard for engineering students." }
         ].map((item, i) => (
